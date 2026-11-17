@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter, Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,12 +28,33 @@ function RouteFallback() {
   return <main className="route-fallback" aria-label="Loading page"><span className="status-dot" /> Loading portfolio...</main>;
 }
 
+function PageBreadcrumbs({ pathname }) {
+  const pageNames = {
+    '/projects': 'Projects',
+    '/experience': 'Experience',
+    '/articles': 'Articles',
+    '/about': 'About',
+  };
+  const currentPage = pageNames[pathname];
+
+  if (!currentPage) return null;
+
+  return (
+    <nav className="page-breadcrumbs" aria-label="Breadcrumb">
+      <Link to="/">Home</Link>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{currentPage}</span>
+    </nav>
+  );
+}
+
 function PortfolioLayout() {
   const location = useLocation();
 
   return (
     <div className="app-shell">
       <Navbar />
+      <PageBreadcrumbs pathname={location.pathname} />
       <Suspense fallback={<RouteFallback />}>
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
