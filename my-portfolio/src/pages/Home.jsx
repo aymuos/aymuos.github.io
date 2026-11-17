@@ -35,6 +35,11 @@ export default function Home() {
             <span className="hero-social-divider" />
             <span><span className="status-dot" /> Open to meaningful problems</span>
           </motion.div>
+          <div className="hero-doodles" aria-hidden="true">
+            <span className="doodle-star" />
+            <span className="doodle-loop" />
+            <span className="doodle-dots"><i /><i /><i /></span>
+          </div>
         </div>
 
         <motion.div className="hero-art" initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.28, duration: 0.7 }}>
