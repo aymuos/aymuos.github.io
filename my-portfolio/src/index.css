@@ -711,3 +711,267 @@ body { color: var(--text); }
 @media (max-width: 640px) {
   .hero-doodles { right: 4px; bottom: -30px; }
 }
+
+/* Floating navbar + Bento portfolio edition */
+.site-navbar {
+  position: sticky !important;
+  top: 12px !important;
+  left: 0;
+  width: calc(100% - 32px) !important;
+  max-width: 1120px;
+  height: 64px !important;
+  margin: 12px auto 0;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px;
+  box-shadow: 0 12px 38px rgba(38, 29, 70, .10);
+  backdrop-filter: blur(18px);
+  transform: none;
+}
+.site-navbar [data-slot="base"] {
+  height: 64px;
+  min-height: 64px;
+  padding-inline: 0;
+}
+.site-navbar [data-slot="wrapper"] {
+  width: calc(100% - 28px) !important;
+  max-width: none;
+  height: 64px;
+  padding-inline: 0;
+  margin-inline: auto;
+}
+.navbar-inner {
+  display: grid !important;
+  grid-template-columns: minmax(170px, 1fr) auto minmax(170px, 1fr) !important;
+  width: 100% !important;
+  align-items: center;
+}
+.navbar-inner [data-slot="brand"] {
+  justify-self: start;
+  min-width: 0;
+}
+.navbar-inner .desktop-nav {
+  justify-self: center;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.navbar-inner .nav-actions {
+  justify-self: end;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+.desktop-nav [data-slot="item"],
+.nav-actions [data-slot="item"] {
+  display: inline-flex;
+  align-items: center;
+}
+.nav-link {
+  height: 34px;
+  align-items: center;
+  margin: 0;
+  padding-inline: 10px;
+}
+.theme-toggle,
+.mobile-menu-toggle,
+.nav-contact {
+  margin: 0 !important;
+  vertical-align: middle;
+}
+.nav-contact {
+  height: 34px !important;
+  min-height: 34px !important;
+  padding-inline: 13px !important;
+}
+
+.hero-section {
+  width: calc(100% - 32px);
+  min-height: 560px;
+  margin-top: 28px;
+  margin-bottom: 24px;
+  padding: 52px 54px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--pastel-violet) 8%, var(--panel)), transparent 55%),
+    linear-gradient(315deg, color-mix(in srgb, var(--pastel-pink) 7%, var(--panel)), transparent 48%);
+  box-shadow: 0 20px 60px rgba(43, 35, 78, .08);
+  overflow: hidden;
+}
+.hero-art {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--panel-raised) 52%, transparent);
+}
+.metrics-section {
+  width: calc(100% - 32px);
+  max-width: 1120px;
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  overflow: hidden;
+}
+.metrics-grid {
+  width: 100%;
+  padding-inline: 0;
+}
+.metric-item {
+  min-height: 82px;
+  align-items: center;
+  border-right-color: var(--line);
+}
+.metric-item:last-child {
+  border-right: 0;
+}
+.home-projects {
+  padding-top: 86px;
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px;
+}
+.featured-grid .project-card {
+  grid-column: span 4;
+  min-height: 320px;
+  border-radius: 20px !important;
+  background: color-mix(in srgb, var(--panel) 92%, transparent) !important;
+}
+.featured-grid .project-card:first-child {
+  grid-column: span 6;
+  min-height: 320px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--pastel-violet) 16%, var(--panel)), var(--panel)) !important;
+}
+.featured-grid .project-card:nth-child(2) {
+  grid-column: span 6;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--pastel-blue) 14%, var(--panel)), var(--panel)) !important;
+}
+.featured-grid .project-card:nth-child(3) {
+  grid-column: span 12;
+  min-height: 240px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--pastel-mint) 14%, var(--panel)), var(--panel)) !important;
+}
+.home-cta-card {
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 82% 40%, rgba(255,145,185,.16), transparent 35%),
+    linear-gradient(120deg, color-mix(in srgb, var(--pastel-violet) 11%, var(--panel)), var(--panel));
+}
+
+@media (max-width: 900px) {
+  .site-navbar {
+    width: calc(100% - 24px) !important;
+  }
+  .navbar-inner {
+    grid-template-columns: 1fr auto !important;
+  }
+  .navbar-inner [data-slot="brand"] {
+    grid-column: 1;
+  }
+  .navbar-inner .desktop-nav {
+    display: none !important;
+  }
+  .navbar-inner .nav-actions {
+    grid-column: 2;
+  }
+  .brand-name {
+    display: inline;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+  .nav-contact {
+    display: none !important;
+  }
+  .hero-section {
+    width: calc(100% - 24px);
+    padding: 44px 36px;
+  }
+  .metrics-section {
+    width: calc(100% - 24px);
+  }
+  .featured-grid .project-card,
+  .featured-grid .project-card:first-child,
+  .featured-grid .project-card:nth-child(2),
+  .featured-grid .project-card:nth-child(3) {
+    grid-column: span 6;
+  }
+  .featured-grid .project-card:nth-child(3) {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-navbar {
+    top: 8px !important;
+    width: calc(100% - 16px) !important;
+    height: 58px !important;
+    margin-top: 8px;
+    border-radius: 16px;
+  }
+  .site-navbar [data-slot="base"],
+  .site-navbar [data-slot="wrapper"] {
+    height: 58px;
+  }
+  .site-navbar [data-slot="wrapper"] {
+    width: calc(100% - 20px) !important;
+  }
+  .brand-name {
+    display: none;
+  }
+  .nav-actions {
+    gap: 6px !important;
+  }
+  .theme-toggle,
+  .mobile-menu-toggle {
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+  }
+  .mobile-menu {
+    top: 66px;
+    width: 100%;
+    border-radius: 0 0 16px 16px;
+  }
+  .hero-section {
+    width: calc(100% - 20px);
+    margin-top: 18px;
+    padding: 38px 20px 28px;
+    border-radius: 22px;
+  }
+  .hero-art {
+    border-radius: 18px;
+  }
+  .metrics-section {
+    width: calc(100% - 20px);
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-item {
+    min-height: 70px;
+    padding-inline: 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .metric-item:last-child {
+    border-bottom: 0;
+  }
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-grid .project-card,
+  .featured-grid .project-card:first-child,
+  .featured-grid .project-card:nth-child(2),
+  .featured-grid .project-card:nth-child(3) {
+    grid-column: 1;
+    min-height: 260px;
+  }
+  .home-cta-card {
+    padding-inline: 24px;
+  }
+}
