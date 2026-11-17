@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Card, CardBody } from '@heroui/react';
-import { ArrowUpRight, Brain, Braces, Cloud, Code2, Layers, Rocket, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Brain, Braces, ChevronDown, Cloud, Code2, Layers, Rocket, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeading from '../components/SectionHeading';
 import { skillGroups, timeline } from '../data/portfolio';
@@ -8,6 +9,8 @@ const icons = { sparkles: Sparkles, layers: Layers, rocket: Rocket };
 const skillIcons = { brain: Brain, sparkles: Sparkles, server: Cloud, code: Code2 };
 
 export default function Experience() {
+  const [openItem, setOpenItem] = useState(0);
+
   return (
     <div className="page-container subpage experience-page">
       <div className="page-intro">
@@ -18,18 +21,41 @@ export default function Experience() {
       <div className="experience-layout">
         <section className="timeline-section">
           <div className="section-kicker">THE JOURNEY <span className="kicker-line" /></div>
-          <div className="timeline">
+          <div className="roadmap-accordion">
             {timeline.map((item, index) => {
               const Icon = icons[item.icon];
+              const isOpen = openItem === index;
               return (
-                <article className="timeline-item" key={item.title}>
-                  <div className="timeline-marker"><span>{String(index + 1).padStart(2, '0')}</span><i /></div>
-                  <div className="timeline-content">
-                    <span className="timeline-period">{item.period}</span>
-                    <h3>{item.title}</h3>
-                    <span className="timeline-subtitle"><Icon size={14} />{item.subtitle}</span>
-                    <p>{item.description}</p>
-                  </div>
+                <article className={`roadmap-card${isOpen ? ' open' : ''}`} key={item.title}>
+                  <button
+                    className="roadmap-trigger"
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenItem(isOpen ? -1 : index)}
+                  >
+                    <span className="roadmap-period">{item.period}</span>
+                    <span className="roadmap-heading">
+                      <span className="roadmap-org">{item.organization}</span>
+                      <h3><Icon size={16} />{item.title}</h3>
+                    </span>
+                    <ChevronDown className="roadmap-chevron" size={18} />
+                  </button>
+                  {isOpen && (
+                    <div className="roadmap-panel">
+                      <span className="timeline-subtitle">{item.subtitle}</span>
+                      <p>{item.description}</p>
+                      <div className="roadmap-details">
+                        <div>
+                          <small>CORE TOPICS</small>
+                          <div className="roadmap-tags">{item.topics.map((topic) => <span key={topic}>{topic}</span>)}</div>
+                        </div>
+                        <div>
+                          <small>KEY HIGHLIGHTS</small>
+                          <ul>{item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </article>
               );
             })}

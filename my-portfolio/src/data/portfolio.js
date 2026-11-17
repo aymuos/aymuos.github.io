@@ -90,31 +90,41 @@ export const skillGroups = [
 
 export const timeline = [
   {
-    period: 'CURRENT FOCUS',
-    title: 'Generative AI & agents',
+    period: '2025 — PRESENT',
+    organization: 'Independent research',
+    title: 'Generative AI & agent systems',
     subtitle: 'Applied AI · retrieval · workflows',
-    description: 'Exploring how to make LLM-powered tools useful, grounded, and dependable in real workflows.',
+    description: 'Designing grounded AI workflows that connect language models, structured tools, and measurable human outcomes.',
+    topics: ['Retrieval-augmented generation', 'Tool-using agents', 'LLM evaluation', 'Human-in-the-loop systems'],
+    highlights: ['Built citation-aware research assistants', 'Designed bounded, observable agent workflows', 'Evaluated grounded answer quality'],
     icon: 'sparkles',
   },
   {
-    period: 'FOUNDATION',
+    period: '2022 — 2025',
+    organization: 'Applied ML practice',
     title: 'Industrial AI & optimization',
     subtitle: 'Systems thinking · causal ML · decisions',
-    description: 'Connecting data, modeling, software, and the people who rely on the final system.',
+    description: 'Connecting data, modeling, software, and the people who rely on the final system in practical decision workflows.',
+    topics: ['Causal inference', 'Optimization', 'Time-series modeling', 'Production ML'],
+    highlights: ['Turned model findings into decision support', 'Built reproducible experiment pipelines', 'Focused evaluation on real operational impact'],
     icon: 'layers',
   },
   {
-    period: 'IN PRACTICE',
+    period: 'FOUNDATION',
+    organization: 'Engineering craft',
     title: 'From models to systems',
     subtitle: 'Engineering · cloud · production',
     description: 'Turning first-principles questions into small experiments, measurable results, and clearer decisions.',
+    topics: ['Python engineering', 'FastAPI services', 'MLOps', 'Cloud infrastructure'],
+    highlights: ['Built typed, testable APIs', 'Containerized ML applications', 'Created observable model-to-service pipelines'],
     icon: 'rocket',
   },
 ];
 
 export const profileLinks = {
   github: 'https://github.com/aymuos',
-  linkedin: 'https://www.linkedin.com/',
-  scholar: 'https://scholar.google.com/',
+  medium: 'https://medium.com/@aymuosmukherjee',
+  linkedin: 'https://in.linkedin.com/in/mukherjee-soumya',
+  scholar: 'https://scholar.google.com/citations?user=hp6IjoUAAAAJ&hl=en',
   email: '',
 };

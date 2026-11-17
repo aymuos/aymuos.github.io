@@ -1,19 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Navbar as HeroNavbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 
 const links = [
   { label: 'Home', to: '/' },
   { label: 'Projects', to: '/projects' },
   { label: 'Experience', to: '/experience' },
+  { label: 'Articles', to: '/articles' },
   { label: 'About', to: '/about' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
 
   const closeMenu = () => setMenuOpen(false);
+  const toggleTheme = () => setTheme((current) => current === 'dark' ? 'light' : 'dark');
 
   return (
     <HeroNavbar isBordered maxWidth="xl" className="site-navbar" classNames={{ wrapper: 'navbar-inner' }}>
@@ -35,6 +43,15 @@ export default function Navbar() {
       </NavbarContent>
 
       <NavbarContent justify="end" className="nav-actions">
+        <Button
+          isIconOnly
+          variant="flat"
+          className="theme-toggle"
+          aria-label={`Switch to ${theme === 'dark' ? 'bright' : 'dark'} mode`}
+          onPress={toggleTheme}
+        >
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+        </Button>
         <Button
           as={Link}
           to="/about"

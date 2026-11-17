@@ -8,6 +8,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Projects = lazy(() => import('./pages/Projects'));
 const Experience = lazy(() => import('./pages/Experience'));
 const About = lazy(() => import('./pages/About'));
+const Articles = lazy(() => import('./pages/Articles'));
 
 function PageTransition({ children }) {
   return (
@@ -39,6 +40,7 @@ function PortfolioLayout() {
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
             <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
             <Route path="/experience" element={<PageTransition><Experience /></PageTransition>} />
+            <Route path="/articles" element={<PageTransition><Articles /></PageTransition>} />
             <Route path="/about" element={<PageTransition><About /></PageTransition>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
